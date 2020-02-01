@@ -67,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
         {
             gun.Fire(CC.m_FacingRight);
         }
+
+        if (controller.InputB())
+        {
+            gun.FireBounce(CC.m_FacingRight);
+        }
     }
 
     private void FixedUpdate()
