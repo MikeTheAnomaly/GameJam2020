@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Movement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public LayerMask enemyMask;
     public float speed = 1;
@@ -25,10 +25,12 @@ public class Enemy_Movement : MonoBehaviour
         Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth;
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
         bool isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
-        Debug.DrawLine(lineCastPos, lineCastPos - myTrans.right.toVector2() *.02f);
-        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - myTrans.right.toVector2() *.02f, enemyMask);
-        
-        if(!isGrounded || isBlocked)
+
+        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right), enemyMask);
+        Debug.DrawLine(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) *.02f);
+        isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) *.02f, enemyMask);
+
+        if (!isGrounded || isBlocked)
         {
             Vector3 currRot = myTrans.eulerAngles;
             currRot.y += 180;
@@ -39,5 +41,7 @@ public class Enemy_Movement : MonoBehaviour
         Vector2 myVel = myBody.velocity;
         myVel.x = -myTrans.right.x * speed;
         myBody.velocity = myVel;
+
+
     }
 }
