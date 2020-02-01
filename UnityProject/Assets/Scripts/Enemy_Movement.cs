@@ -10,6 +10,9 @@ public class Enemy_Movement : MonoBehaviour
     Transform myTrans;
     float myWidth;
 
+    //public Transform GroundCheck;
+    public bool isGrounded;
+    public bool isBlocked;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +22,18 @@ public class Enemy_Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //check to see if there's ground in front of it before moving forward
         Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth;
-        Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
-        bool isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
+        Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down + new Vector2(0,-5));
+        isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down + new Vector2(0, -5), enemyMask);
 
-        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right), enemyMask);
+        isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right), enemyMask);
         Debug.DrawLine(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) *.02f);
         isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) *.02f, enemyMask);
 
-        if (!isGrounded || isBlocked)
+        if (!isGrounded && myBody.velocity.y == 0)
         {
             Vector3 currRot = myTrans.eulerAngles;
             currRot.y += 180;
@@ -41,7 +44,6 @@ public class Enemy_Movement : MonoBehaviour
         Vector2 myVel = myBody.velocity;
         myVel.x = -myTrans.right.x * speed;
         myBody.velocity = myVel;
-
 
     }
 }
