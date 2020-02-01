@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 mouse = Input.mousePosition;
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(Vector3.zero);
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mouse);
         Vector2 offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
         float angle = Mathf.Atan2(offset.y, 100) * Mathf.Rad2Deg;
         if (!CC.m_FacingRight)
@@ -42,12 +43,12 @@ public class PlayerMovement : MonoBehaviour
         }
         arm.transform.rotation = Quaternion.Euler(0, 0,Mathf.Clamp(angle,-80,90));
 
-        if(offset.x < 0 && CC.m_FacingRight)
+        if( worldPoint.x < transform.position.x && CC.m_FacingRight)
         {
             CC.Flip();
         }
 
-        if (offset.x > 0 && !CC.m_FacingRight)
+        if (worldPoint.x > transform.position.x && !CC.m_FacingRight)
         {
             CC.Flip();
         }
