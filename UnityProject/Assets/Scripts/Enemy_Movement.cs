@@ -46,4 +46,12 @@ public class Enemy_Movement : MonoBehaviour
         myBody.velocity = myVel;
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "blob")
+        {
+            collision.gameObject.GetComponent<GoopShoot>().RemoveBlob();
+        }
+    }
 }

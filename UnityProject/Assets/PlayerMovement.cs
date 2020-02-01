@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private bool inputX;
     public bool inputA;
     private Vector3 joy;
+
+    Animator am;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +24,15 @@ public class PlayerMovement : MonoBehaviour
         {
             this.GetComponent<CharacterController2D>();
         }
+        am = this.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        am.SetFloat("speed", rb.velocity.x);
         joy = controller.Joystick1();
         inputX = controller.InputX();
         inputA = controller.InputA();

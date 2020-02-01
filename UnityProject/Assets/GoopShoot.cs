@@ -34,13 +34,14 @@ public class GoopShoot : MonoBehaviour
     {
         if(collision.gameObject.tag == "blob")
         {
-            rb.constraints = RigidbodyConstraints2D.None;
+            
             RemoveBlob();   
         }
     }
 
-    private void RemoveBlob()
+    public void RemoveBlob()
     {
+        rb.constraints = RigidbodyConstraints2D.None;
         StartCoroutine("Fade");
     }
 
