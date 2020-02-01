@@ -16,12 +16,12 @@ public class TextboxManager : MonoBehaviour
     public int currentLine;
     public int endAtLine;
 
-    //public CharacterController2D player;
+    public CharacterController2D player;
 
     // Start is called before the first frame update
     void Start()
     {
-        //player = FindObjectOfType<CharacterController2D>();
+        player = FindObjectOfType<CharacterController2D>();
         if (textFile != null)
         {
             textLines = textFile.text.Split('\n');
@@ -37,9 +37,17 @@ public class TextboxManager : MonoBehaviour
     {
         theText.text = textLines[currentLine];
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             currentLine++;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            currentLine--;
+        }
+        if(currentLine > endAtLine)
+        {
+            textBox.SetActive(false);
         }
     }
 }
