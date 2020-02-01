@@ -51,6 +51,7 @@ public class Enemy_Movement : MonoBehaviour
     {
         if(collision.gameObject.tag == "blob" || collision.gameObject.tag == "blobbounce")
         {
+            SoundManagerScript.PlaySound("Chomp");
             collision.gameObject.GetComponent<GoopShoot>().RemoveBlob();
         }
     }
