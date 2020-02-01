@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public static class extentionMethods
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Vector2 toVector2(this Vector2 vec3)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return new Vector2(vec3.x, vec3.y);
     }
 }
