@@ -727,6 +727,19 @@ PrefabInstance:
       propertyPath: numberToSpawn
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1752604649, guid: 1d80f88e70bef3442b7028ef7b2019f7, type: 3}
+      propertyPath: GoopBounceProjectile
+      value: 
+      objectReference: {fileID: 3599129285985582902, guid: a169bb2bc52bf3a4bad8932b2fa1ba3d,
+        type: 3}
+    - target: {fileID: 1752604649, guid: 1d80f88e70bef3442b7028ef7b2019f7, type: 3}
+      propertyPath: ballNumToSpawn
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752604649, guid: 1d80f88e70bef3442b7028ef7b2019f7, type: 3}
+      propertyPath: ballBounceNum
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1629886014581390541, guid: 1d80f88e70bef3442b7028ef7b2019f7,
         type: 3}
       propertyPath: m_LocalPosition.x
