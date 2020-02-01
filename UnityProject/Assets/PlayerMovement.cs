@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
 
     public Controllable controller;
-
+    public Transform arm;
     private bool inputX;
     public bool inputA;
     private Vector3 joy;
@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         joy = controller.Joystick1();
         inputX = controller.InputX();
         inputA = controller.InputA();
+        Debug.Log(Input.GetAxis("Mouse Y"));
+        arm.rotation =Quaternion.Euler(0, 0,Input.GetAxis("Mouse Y"));
     }
 
     private void FixedUpdate()
