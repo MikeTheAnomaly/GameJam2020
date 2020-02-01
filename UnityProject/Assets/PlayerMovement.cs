@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            CC.Move(joy.x *  speed * Time.fixedDeltaTime, inputX, inputA);
+            CC.Move(joy.x *  speed * Time.fixedDeltaTime, inputX, controller.InputA());
         }
     }
 }
