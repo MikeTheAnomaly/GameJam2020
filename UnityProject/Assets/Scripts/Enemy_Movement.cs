@@ -9,6 +9,10 @@ public class Enemy_Movement : MonoBehaviour
     Rigidbody2D myBody;
     Transform myTrans;
     float myWidth;
+    Animator am;
+
+    bool chomp = false;
+
 
     //public Transform GroundCheck;
     public bool isGrounded;
@@ -16,6 +20,7 @@ public class Enemy_Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        am = this.GetComponent<Animator>();
         myTrans = this.transform;
         myBody = this.GetComponent<Rigidbody2D>();
         myWidth = this.GetComponentInParent<SpriteRenderer>().bounds.extents.x;
@@ -24,6 +29,8 @@ public class Enemy_Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        am.SetBool("chompy", chomp);
+        chomp = false;
         //check to see if there's ground in front of it before moving forward
         Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth;
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down + new Vector2(0,-5));
@@ -45,6 +52,8 @@ public class Enemy_Movement : MonoBehaviour
         myVel.x = -myTrans.right.x * speed;
         myBody.velocity = myVel;
 
+        am.SetFloat("Speed", myBody.velocity.x);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,6 +61,7 @@ public class Enemy_Movement : MonoBehaviour
         if(collision.gameObject.tag == "blob" || collision.gameObject.tag == "blobbounce")
         {
             SoundManagerScript.PlaySound("Chomp");
+            chomp = true;
             collision.gameObject.GetComponent<GoopShoot>().RemoveBlob();
         }
     }
