@@ -23,12 +23,16 @@ public class Enemy_Movement : MonoBehaviour
     {
         //check to see if there's ground in front of it before moving forward
         Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth;
-        Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down,Color.red);
+        Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
         bool isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
-        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - myTrans.right, enemyMask);
-        
+<<<<<<< HEAD
+        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - toVector2(myTrans.right), enemyMask);
+=======
+        Debug.DrawLine(lineCastPos, lineCastPos - myTrans.right.toVector2() *.02f);
+        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - myTrans.right.toVector2() *.02f, enemyMask);
+>>>>>>> 94759ac4da39b140d9955845fd371f6f17c61b1b
 
-        if (!isGrounded)
+        if (!isGrounded || isBlocked)
         {
             Vector3 currRot = myTrans.eulerAngles;
             currRot.y += 180;
@@ -39,5 +43,11 @@ public class Enemy_Movement : MonoBehaviour
         Vector2 myVel = myBody.velocity;
         myVel.x = -myTrans.right.x * speed;
         myBody.velocity = myVel;
+
+
+    }
+    public static Vector2 toVector2(this Vector3 vec3)
+    {
+        return new Vector2(vec3.x, vec3.y);
     }
 }
