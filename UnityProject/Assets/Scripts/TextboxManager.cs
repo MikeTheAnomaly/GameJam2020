@@ -41,10 +41,7 @@ public class TextboxManager : MonoBehaviour
         {
             currentLine++;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            currentLine--;
-        }
+        
         if(currentLine > endAtLine)
         {
             textBox.SetActive(false);
