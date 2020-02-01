@@ -25,7 +25,7 @@ public class Enemy_Movement : MonoBehaviour
         Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth;
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down,Color.red);
         bool isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
-        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - toVector2(myTrans.right), enemyMask);
+        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - myTrans.right, enemyMask);
         
 
         if (!isGrounded)
@@ -39,11 +39,5 @@ public class Enemy_Movement : MonoBehaviour
         Vector2 myVel = myBody.velocity;
         myVel.x = -myTrans.right.x * speed;
         myBody.velocity = myVel;
-
-
-    }
-    public static Vector2 toVector2(this Vector3 vec3)
-    {
-        return new Vector2(vec3.x, vec3.y);
     }
 }
