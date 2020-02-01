@@ -40,15 +40,18 @@ public class PlayerMovement : MonoBehaviour
         //arm.rotation =Quaternion.Euler(0, 0,Input.GetAxis("Mouse Y"));
 
         Vector3 mouse = Input.mousePosition;
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(Vector3.zero);
+        Vector3 screenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mouse);
         Vector2 offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
-        float angle = Mathf.Atan2(offset.y, 100) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(offset.y, Mathf.Abs(offset.x)) * Mathf.Rad2Deg;
+        //Debug.Log(angle);
         if (!CC.m_FacingRight)
         {
             angle *= -1;
+            
         }
-        arm.transform.rotation = Quaternion.Euler(0, 0,Mathf.Clamp(angle,-80,90));
+        angle = Mathf.Clamp(angle, -90, 90);
+        arm.transform.rotation = Quaternion.Euler(0, 0,angle);
 
         if( worldPoint.x < transform.position.x && CC.m_FacingRight)
         {

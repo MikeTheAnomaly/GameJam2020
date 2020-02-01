@@ -6,10 +6,21 @@ public class GoopGun : MonoBehaviour
 {
     public GameObject GoopProjectile;
     public Transform FirePostion;
+
+    public int numberToSpawn;
+    Queue<GameObject> balls;
     // Start is called before the first frame update
     void Start()
     {
+        balls = new Queue<GameObject>();
+        for (int i = 0; i < numberToSpawn; i++)
+        {
+            GameObject ball = Instantiate(GoopProjectile);
+            ball.SetActive(false);
+            balls.Enqueue(ball);
+        }
         
+
     }
 
     // Update is called once per frame
@@ -29,6 +40,18 @@ public class GoopGun : MonoBehaviour
         {
             roation = this.transform.rotation;
         }
-        Instantiate(GoopProjectile, FirePostion.position, roation);
+
+        balls.Enqueue(respawn(balls.Dequeue(), FirePostion.position, roation));
+
+
+    }
+
+    private GameObject respawn(GameObject obj, Vector3 position, Quaternion roation)
+    {
+        obj.transform.position = position;
+        obj.transform.rotation = roation;
+        obj.SetActive(true);
+        return obj;
+        
     }
 }
