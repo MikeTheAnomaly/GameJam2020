@@ -134,7 +134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847386497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 0.6499999, z: 0}
+  m_LocalPosition: {x: -0.45, y: 0.6499999, z: -1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 526180758}
@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 1629886014581390515}
   - component: {fileID: 1629886014581390514}
   - component: {fileID: 1615382596}
+  - component: {fileID: 443148650}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -492,6 +493,25 @@ MonoBehaviour:
   controller: {fileID: 0}
   arm: {fileID: 847386498}
   inputA: 0
+--- !u!95 &443148650
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629886014581390543}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbb655c6a4e830c45ae1b8ccea64a5ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1629886014581741470
 GameObject:
   m_ObjectHideFlags: 0
