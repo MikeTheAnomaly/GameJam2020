@@ -12,11 +12,12 @@ public class GoopShoot : MonoBehaviour
     private bool wait = true;
 
     public bool gettingremoved = false;
-    private GoopShoot connectedTo;
-    private GoopShoot alsoConnectedTo;
+    public GoopShoot connectedTo;
+    public GoopShoot alsoConnectedTo;
     // Start is called before the first frame update
     void OnEnable()
     {
+        alsoConnectedTo = null;
         connectedTo = null;
         gettingremoved = false;
         wait = true;
@@ -38,12 +39,14 @@ public class GoopShoot : MonoBehaviour
 
         if(connectedTo != null)
         {
-            
             if (connectedTo.gettingremoved)
             {
-                Debug.Log("ran");
                 RemoveBlob();
             }
+        }
+        else if(alsoConnectedTo != null)
+        {
+            //RemoveBlob();
         }
     }
 
@@ -68,9 +71,10 @@ public class GoopShoot : MonoBehaviour
                 if (connectedTo == null)
                 {
                     connectedTo = collision.gameObject.GetComponent<GoopShoot>();
-                }else if(alsoConnectedTo == null)
-                {
-                    alsoConnectedTo = collision.gameObject.GetComponent<GoopShoot>();
+                    if(connectedTo.alsoConnectedTo == null)
+                    {
+                        connectedTo.alsoConnectedTo = this;
+                    }
                 }
                
             }
@@ -106,6 +110,12 @@ public class GoopShoot : MonoBehaviour
 
     public void InstantRemove()
     {
+        if (alsoConnectedTo)
+        {
+            alsoConnectedTo.RemoveBlob();
+        }
+        alsoConnectedTo = null;
+        connectedTo = null;
         gettingremoved = true;
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints2D.None;
