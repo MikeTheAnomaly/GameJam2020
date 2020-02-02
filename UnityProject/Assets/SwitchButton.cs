@@ -22,7 +22,7 @@ public class SwitchButton : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "blob"){
-            Debug.Log("rand");
+            SoundManagerScript.PlaySound("Click");
             events.Invoke();
         }
     }
