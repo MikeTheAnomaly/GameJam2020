@@ -35,6 +35,9 @@ public class GoopShoot : MonoBehaviour
         if (( collision.gameObject.tag != "blobbounce" && collision.gameObject.tag != "Player") && !connected)
         {
             connected = true;
+            rb.isKinematic = true;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = 0;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             //transform.localScale = new Vector3(10, 10);
 
@@ -64,13 +67,12 @@ public class GoopShoot : MonoBehaviour
     IEnumerator Fade()
     {
         yield return new WaitForSeconds(1f);
-        connected = false;
-        transform.localScale = new Vector2(1, 1);
-        this.gameObject.SetActive(false);
+        InstantRemove();
     }
 
     public void InstantRemove()
     {
+        rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints2D.None;
         connected = false;
         transform.localScale = new Vector2(1, 1);
