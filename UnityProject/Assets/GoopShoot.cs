@@ -51,6 +51,8 @@ public class GoopShoot : MonoBehaviour
     {
         if (( collision.gameObject.tag != "blobbounce" && collision.gameObject.tag != "Player") && !connected)
         {
+            SoundManagerScript.PlaySound("splat");
+
             connected = true;
             rb.isKinematic = true;
             rb.velocity = Vector3.zero;
