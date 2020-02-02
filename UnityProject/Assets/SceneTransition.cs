@@ -10,6 +10,12 @@ public class SceneTransition : MonoBehaviour
 
     public int sceneToLoad;
     public bool StoryScene = false;
+    public bool setStoryStuff = false;
+    public int setStory = 0;
+    public int setStoryScene = 0;
+
+    
+
     public void AddToNeeded()
     {
         numcurrent++;
