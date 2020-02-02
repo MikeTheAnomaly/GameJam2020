@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TextboxManager : MonoBehaviour
 {
-
+    public UnityEvent OnDoneReading;
     public GameObject textBox;
 
     public Text theText;
@@ -25,6 +26,7 @@ public class TextboxManager : MonoBehaviour
         if (textFile != null)
         {
             textLines = textFile.text.Split('\n');
+            
 
         }
 
@@ -35,7 +37,16 @@ public class TextboxManager : MonoBehaviour
     }
     void Update()
     {
-        theText.text = textLines[currentLine];
+        if (textLines.Length > currentLine)
+        {
+            theText.text = textLines[currentLine];
+        }
+        else
+        {
+
+            OnDoneReading.Invoke();
+            this.gameObject.SetActive(false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

@@ -11,6 +11,8 @@ public class Enemy_Movement : MonoBehaviour
     float myWidth;
     Animator am;
 
+    public bool sidways;
+
     bool chomp = false;
 
 
@@ -46,12 +48,13 @@ public class Enemy_Movement : MonoBehaviour
             currRot.y += 180;
             myTrans.eulerAngles = currRot;
         }
-
-        //Always move forward
-        Vector2 myVel = myBody.velocity;
-        myVel.x = -myTrans.right.x * speed;
-        myBody.velocity = myVel;
-
+        if (!sidways)
+        {
+            //Always move forward
+            Vector2 myVel = myBody.velocity;
+            myVel.x = -myTrans.right.x * speed;
+            myBody.velocity = myVel;
+        }
         am.SetFloat("Speed", myBody.velocity.x);
 
     }
@@ -66,9 +69,12 @@ public class Enemy_Movement : MonoBehaviour
         }
         else
         {
-            Vector3 currRot = myTrans.eulerAngles;
-            currRot.y += 180;
-            myTrans.eulerAngles = currRot;
+            if (!sidways)
+            {
+                Vector3 currRot = myTrans.eulerAngles;
+                currRot.y += 180;
+                myTrans.eulerAngles = currRot;
+            }
         }
     }
 }
