@@ -9,10 +9,17 @@ public class GoopShoot : MonoBehaviour
 
     public float sizeIncrease = 10;
     private bool connected = false;
-    private bool wait = false;
+    private bool wait = true;
+
+    public bool gettingremoved = false;
+    private GoopShoot connectedTo;
+    private GoopShoot alsoConnectedTo;
     // Start is called before the first frame update
     void OnEnable()
     {
+        connectedTo = null;
+        gettingremoved = false;
+        wait = true;
         rb = this.GetComponent<Rigidbody2D>();
         rb.AddForce(transform.right * shootForce);
     }
@@ -27,6 +34,16 @@ public class GoopShoot : MonoBehaviour
         {
             transform.localScale = transform.localScale + new Vector3(10 * Time.deltaTime,10 * Time.deltaTime,0);
             wait = false;
+        }
+
+        if(connectedTo != null)
+        {
+            
+            if (connectedTo.gettingremoved)
+            {
+                Debug.Log("ran");
+                RemoveBlob();
+            }
         }
     }
 
@@ -44,7 +61,16 @@ public class GoopShoot : MonoBehaviour
             if (collision.gameObject.tag == "blob" && transform.localScale.x <= sizeIncrease)
             {
                 wait = true;
+                
                 transform.localScale = new Vector3(.8f * sizeIncrease, .8f * sizeIncrease, 0);
+                if (connectedTo == null)
+                {
+                    connectedTo = collision.gameObject.GetComponent<GoopShoot>();
+                }else if(alsoConnectedTo == null)
+                {
+                    alsoConnectedTo = collision.gameObject.GetComponent<GoopShoot>();
+                }
+               
             }
         }
     }
@@ -53,13 +79,19 @@ public class GoopShoot : MonoBehaviour
     {
         if(collision.gameObject.tag == "blob" && !wait)
         {
-            
-            RemoveBlob();   
+
+            if (collision.gameObject.GetComponent<GoopShoot>().gettingremoved)
+            {
+                this.gettingremoved = true;
+                RemoveBlob();
+            }
         }
     }
 
     public void RemoveBlob()
     {
+        gettingremoved = true;
+        rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints2D.None;
         StartCoroutine("Fade");
     }
@@ -72,6 +104,7 @@ public class GoopShoot : MonoBehaviour
 
     public void InstantRemove()
     {
+        gettingremoved = true;
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints2D.None;
         connected = false;

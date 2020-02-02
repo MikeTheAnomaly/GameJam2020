@@ -49,7 +49,7 @@ public class Enemy_Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "blob")
+        if(collision.gameObject.tag == "blob" || collision.gameObject.tag == "blobbounce")
         {
             collision.gameObject.GetComponent<GoopShoot>().RemoveBlob();
         }
