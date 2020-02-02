@@ -64,5 +64,11 @@ public class Enemy_Movement : MonoBehaviour
             chomp = true;
             collision.gameObject.GetComponent<GoopShoot>().RemoveBlob();
         }
+        else
+        {
+            Vector3 currRot = myTrans.eulerAngles;
+            currRot.y += 180;
+            myTrans.eulerAngles = currRot;
+        }
     }
 }
