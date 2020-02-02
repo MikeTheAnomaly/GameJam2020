@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip playerShootSound, walkSound, chompSound;
+    public static AudioClip playerShootSound, walkSound, chompSound, clickSound;
     static AudioSource audioSrc;
 
 
@@ -15,6 +15,7 @@ public class SoundManagerScript : MonoBehaviour
         playerShootSound = Resources.Load<AudioClip>("Splat");
         walkSound = Resources.Load<AudioClip>("Walk");
         chompSound = Resources.Load<AudioClip>("Chomp");
+        clickSound = Resources.Load<AudioClip>("Click");
 
         audioSrc = GetComponent<AudioSource>();
 
@@ -38,6 +39,9 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "Splat":
                 audioSrc.PlayOneShot(playerShootSound);
+                break;
+            case "Click":
+                audioSrc.PlayOneShot(clickSound);
                 break;
 
         }
