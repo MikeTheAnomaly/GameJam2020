@@ -6904,6 +6904,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1511320499 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4606244836733171284, guid: c7548d217dc5ec54f8fa179b80cb181f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2006855876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1522405520
 GameObject:
   m_ObjectHideFlags: 0
@@ -9372,6 +9378,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.38
       objectReference: {fileID: 0}
+    - target: {fileID: 4606244836733171285, guid: c7548d217dc5ec54f8fa179b80cb181f,
+        type: 3}
+      propertyPath: block
+      value: 
+      objectReference: {fileID: 1511320499}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7548d217dc5ec54f8fa179b80cb181f, type: 3}
 --- !u!1 &2015122809
