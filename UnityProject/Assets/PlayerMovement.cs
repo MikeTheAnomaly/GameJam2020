@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(CC == null)
+        if (CC == null)
         {
             this.GetComponent<CharacterController2D>();
         }

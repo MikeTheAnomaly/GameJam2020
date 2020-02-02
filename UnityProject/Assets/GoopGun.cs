@@ -40,6 +40,7 @@ public class GoopGun : MonoBehaviour
 
     public void Fire(bool fliped)
     {
+        SoundManagerScript.PlaySound("Splat");
         Quaternion roation;
         if (!fliped)
         {
