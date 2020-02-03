@@ -8,6 +8,4 @@ public static class StaticStoryStuff
     public static TextAsset[] textelems;
     public static int elemCurrent = 0;
     public static int nextScene = 0;
-
-
 }

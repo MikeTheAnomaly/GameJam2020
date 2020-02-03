@@ -21,6 +21,15 @@ public class SceneTransition : MonoBehaviour
         numcurrent++;
     }
 
+
+    private void Start()
+    {
+        if (setStoryStuff)
+        {
+            StaticStoryStuff.elemCurrent = setStory;
+            StaticStoryStuff.nextScene = setStoryScene;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
