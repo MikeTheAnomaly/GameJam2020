@@ -30,7 +30,7 @@ public class Locked : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "player")
+        if (other.gameObject.tag == "Player")
         {
             
             if (!readyToOpen &&  CanTalk && !hasTalked)
@@ -50,6 +50,13 @@ public class Locked : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+
+            if (hasTalked)
+            {
+                am.SetBool("Talking", false);
+            }
+        }
     }
 }
