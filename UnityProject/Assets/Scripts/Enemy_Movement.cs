@@ -62,6 +62,12 @@ public class Enemy_Movement : MonoBehaviour
             myVel.x = -myTrans.right.x * speed;
             myBody.velocity = myVel;
         }
+        else
+        {
+            Vector2 myVel = myBody.velocity;
+            myVel.y = -myTrans.right.x * speed;
+            myBody.velocity = myVel;
+        }
         am.SetFloat("Speed", myBody.velocity.x);
 
     }
