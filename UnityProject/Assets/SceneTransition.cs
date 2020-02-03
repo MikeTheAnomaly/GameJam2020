@@ -9,7 +9,7 @@ public class SceneTransition : MonoBehaviour
     private int numcurrent;
 
     public int sceneToLoad;
-
+    public bool StoryScene = false;
     public void AddToNeeded()
     {
         numcurrent++;
@@ -20,7 +20,14 @@ public class SceneTransition : MonoBehaviour
     {
         if(numcurrent == numNeeded)
         {
-            SceneManager.LoadScene(sceneToLoad);
+            if (!StoryScene)
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
+            else
+            {
+                SceneManager.LoadScene(StaticStoryStuff.nextScene);
+            }
         }
     }
 
