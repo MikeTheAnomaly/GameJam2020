@@ -236,7 +236,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoopProjectile: {fileID: 3599129285985582902, guid: ef5bc2cbefc304449909f5830895c976,
     type: 3}
+  GoopBounceProjectile: {fileID: 0}
   FirePostion: {fileID: 717684169}
+  ballNumToSpawn: 0
+  ballBounceNum: 0
 --- !u!1 &1629886013569612716
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e982c51d38795a44480b16d6b3a034a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 300
+  m_JumpForce: 400
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.177
   m_AirControl: 1
