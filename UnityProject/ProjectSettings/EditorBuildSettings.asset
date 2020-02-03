@@ -6,9 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 2b3052be4807605439d99e61b7a91bb3
+  - enabled: 1
     path: Assets/IntroCutScene.unity
     guid: 97d60123acde9cb4b91e30a00a7869c8
   - enabled: 1
     path: Assets/1Denial.unity
     guid: e4fea44bb52d68a449f49feef39866bb
+  - enabled: 1
+    path: Assets/2Anger.unity
+    guid: 22306d81cdf6d9d49af6b63aa18a1cb0
+  - enabled: 1
+    path: Assets/3Bargaining.unity
+    guid: 90efe0331960a4343ab471b8ff523c54
+  - enabled: 1
+    path: Assets/4Depression.unity
+    guid: fa559609c3847f64eb2ba3b8ce17c4e4
+  - enabled: 1
+    path: Assets/5Acceptance.unity
+    guid: 45c3280aace900440803f292a9a03b31
+  - enabled: 1
+    path: Assets/EndCutScene.unity
+    guid: eed1669c76c969a41bc3b5f59f57aaf2
+  - enabled: 1
+    path: Assets/Podium.unity
+    guid: cb60ac0cd498cf147a81bce72784f0eb
   m_configObjects: {}

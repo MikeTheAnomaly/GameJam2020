@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numNeeded: 2
-  sceneToLoad: 1
+  sceneToLoad: 2
   StoryScene: 0
   setStoryStuff: 0
   setStory: 0
