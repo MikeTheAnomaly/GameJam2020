@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    public int numNeeded;
+    public int numNeeded = 1;
     private int numcurrent;
 
     public int sceneToLoad;
@@ -19,6 +19,14 @@ public class SceneTransition : MonoBehaviour
     void Update()
     {
         if(numcurrent == numNeeded)
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
         {
             SceneManager.LoadScene(sceneToLoad);
         }

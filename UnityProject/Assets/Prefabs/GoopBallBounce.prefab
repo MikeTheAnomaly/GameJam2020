@@ -137,6 +137,7 @@ MonoBehaviour:
   gettingremoved: 0
   connectedTo: {fileID: 0}
   alsoConnectedTo: {fileID: 0}
+  colliderOfObj: {fileID: 8361548001974498039}
 --- !u!60 &8361548001974498039
 PolygonCollider2D:
   m_ObjectHideFlags: 0

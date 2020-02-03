@@ -34,14 +34,21 @@ public class Enemy_Movement : MonoBehaviour
         am.SetBool("chompy", chomp);
         chomp = false;
         //check to see if there's ground in front of it before moving forward
-        Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth;
-        Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down + new Vector2(0,-5));
-        isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down + new Vector2(0, -5), enemyMask);
+        if (!sidways)
+        {
+            Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth;
+            Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down + new Vector2(0, -5));
+            isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down + new Vector2(0, -5), enemyMask);
 
-        isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right), enemyMask);
-        Debug.DrawLine(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) *.02f);
-        isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) *.02f, enemyMask);
 
+            isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right), enemyMask);
+            Debug.DrawLine(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) * .02f);
+            isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - extentionMethods.toVector2(myTrans.right) * .02f, enemyMask);
+        }
+        else
+        {
+            isGrounded = true;
+        }
         if (!isGrounded && myBody.velocity.y == 0)
         {
             Vector3 currRot = myTrans.eulerAngles;

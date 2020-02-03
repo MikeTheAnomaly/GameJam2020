@@ -136,3 +136,4 @@ MonoBehaviour:
   gettingremoved: 0
   connectedTo: {fileID: 0}
   alsoConnectedTo: {fileID: 0}
+  colliderOfObj: {fileID: 3599129285985582900}

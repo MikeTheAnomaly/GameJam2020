@@ -14,9 +14,14 @@ public class GoopShoot : MonoBehaviour
     public bool gettingremoved = false;
     public GoopShoot connectedTo;
     public GoopShoot alsoConnectedTo;
+
+    public Collider2D colliderOfObj;
+
     // Start is called before the first frame update
     void OnEnable()
     {
+        
+        colliderOfObj.enabled = true;
         alsoConnectedTo = null;
         connectedTo = null;
         gettingremoved = false;
@@ -96,6 +101,7 @@ public class GoopShoot : MonoBehaviour
 
     public void RemoveBlob()
     {
+        colliderOfObj.enabled = false;
         gettingremoved = true;
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints2D.None;
