@@ -3145,11 +3145,6 @@ PrefabInstance:
       propertyPath: ballBounceNum
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1629886014581390514, guid: 1d80f88e70bef3442b7028ef7b2019f7,
-        type: 3}
-      propertyPath: m_JumpForce
-      value: 700
-      objectReference: {fileID: 0}
     - target: {fileID: 1629886014581390541, guid: 1d80f88e70bef3442b7028ef7b2019f7,
         type: 3}
       propertyPath: m_LocalPosition.x
